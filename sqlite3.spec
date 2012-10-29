@@ -1,14 +1,14 @@
-%define		upstream_ver	3071300
+%define		upstream_ver	3071401
 
 Summary:	SQLite library
 Name:		sqlite3
-Version:	3.7.13
+Version:	3.7.14.1
 Release:	1
 License:	LGPL
 Group:		Libraries
 # Source0Download: http://sqlite.org/download.html
 Source0:	http://www.sqlite.org/sqlite-src-%{upstream_ver}.zip
-# Source0-md5:	13bb3eaae94592ef3220ea23582763f5
+# Source0-md5:	c594594be4c5353ceb43caade87ca7d6
 URL:		http://sqlite.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -81,8 +81,8 @@ install sqlite3.1 $RPM_BUILD_ROOT%{_mandir}/man1
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post	-p /usr/sbin/ldconfig
+%postun -p /usr/sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
