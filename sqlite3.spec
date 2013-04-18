@@ -1,14 +1,14 @@
-%define		upstream_ver	3071401
+%define		upstream_ver	3071601
 
 Summary:	SQLite library
 Name:		sqlite3
-Version:	3.7.14.1
+Version:	3.7.16.1
 Release:	1
 License:	LGPL
 Group:		Libraries
 # Source0Download: http://sqlite.org/download.html
-Source0:	http://www.sqlite.org/sqlite-src-%{upstream_ver}.zip
-# Source0-md5:	c594594be4c5353ceb43caade87ca7d6
+Source0:	http://www.sqlite.org/2013/sqlite-src-%{upstream_ver}.zip
+# Source0-md5:	1e9392b78f2f6a414635bfff9bccb759
 URL:		http://sqlite.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -60,13 +60,12 @@ cp -f /usr/share/automake/config.sub .
 
 %{__make} \
 	OPT_FEATURE_FLAGS="\
-	-DSQLITE_DISABLE_DIRSYNC=1 \
-	-DSQLITE_ENABLE_COLUMN_METADATA=1 \
-	-DSQLITE_ENABLE_COLUMN_METADATA=1 \
-	-DSQLITE_ENABLE_FTS3=3 \
-	-DSQLITE_ENABLE_RTREE=1 \
-	-DSQLITE_ENABLE_UNLOCK_NOTIFY=1 \
-	-DSQLITE_OMIT_LOAD_EXTENSION=1 \
+	-DSQLITE_DISABLE_DIRSYNC=1		\
+	-DSQLITE_ENABLE_COLUMN_METADATA=1	\
+	-DSQLITE_ENABLE_FTS3=1			\
+	-DSQLITE_ENABLE_RTREE=1			\
+	-DSQLITE_ENABLE_UNLOCK_NOTIFY=1		\
+	-DSQLITE_OMIT_LOAD_EXTENSION=1		\
 	-DSQLITE_SECURE_DELETE=1"
 
 %install
