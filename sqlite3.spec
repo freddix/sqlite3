@@ -1,14 +1,14 @@
-%define		upstream_ver	3080000
+%define		upstream_ver	3080100
 
 Summary:	SQLite library
 Name:		sqlite3
-Version:	3.8.0
+Version:	3.8.1
 Release:	1
 License:	LGPL
 Group:		Libraries
 # Source0Download: http://sqlite.org/download.html
 Source0:	http://www.sqlite.org/2013/sqlite-src-%{upstream_ver}.zip
-# Source0-md5:	08bb5001f1def80c85ba973278ac5653
+# Source0-md5:	f05e46a9bea9f4be2165de2b425d0eed
 URL:		http://sqlite.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
