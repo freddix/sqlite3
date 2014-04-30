@@ -1,14 +1,14 @@
-%define		upstream_ver	3080100
+%define		upstream_ver	3080403
 
 Summary:	SQLite library
 Name:		sqlite3
-Version:	3.8.1
+Version:	3.8.4.3
 Release:	1
 License:	LGPL
 Group:		Libraries
 # Source0Download: http://sqlite.org/download.html
-Source0:	http://www.sqlite.org/2013/sqlite-src-%{upstream_ver}.zip
-# Source0-md5:	f05e46a9bea9f4be2165de2b425d0eed
+Source0:	http://www.sqlite.org/2014/sqlite-src-%{upstream_ver}.zip
+# Source0-md5:	34cd453499e4b4564560accf24a9a70e
 URL:		http://sqlite.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -45,7 +45,7 @@ use these SQLite.
 %prep
 %setup -qn sqlite-src-%{upstream_ver}
 
-sed -i 's/mkdir doc/#mkdir doc/' Makefile*
+%{__sed} -i 's/mkdir doc/#mkdir doc/' Makefile*
 
 %build
 %{__libtoolize}
@@ -85,7 +85,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README
+%doc README.md
 %attr(755,root,root) %{_bindir}/sqlite3
 %attr(755,root,root) %ghost %{_libdir}/lib*.so.?
 %attr(755,root,root) %{_libdir}/lib*.so.*.*.*
