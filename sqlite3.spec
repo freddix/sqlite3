@@ -1,24 +1,23 @@
-%define		upstream_ver	3080403
+%define		upstream_ver	3080600
 
 Summary:	SQLite library
 Name:		sqlite3
-Version:	3.8.4.3
+Version:	3.8.6
 Release:	1
 License:	LGPL
 Group:		Libraries
 # Source0Download: http://sqlite.org/download.html
 Source0:	http://www.sqlite.org/2014/sqlite-src-%{upstream_ver}.zip
-# Source0-md5:	34cd453499e4b4564560accf24a9a70e
+# Source0-md5:	ccac79fdcc5066b8221b606273142ae0
 URL:		http://sqlite.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
+BuildRequires:	ncurses-devel
 BuildRequires:	readline-devel
 BuildRequires:	tcl
 BuildRequires:	unzip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define         _ulibdir        /usr/lib
 
 %description
 SQLite is a C library that implements an SQL database engine. A large
@@ -60,12 +59,10 @@ cp -f /usr/share/automake/config.sub .
 
 %{__make} \
 	OPT_FEATURE_FLAGS="\
-	-DSQLITE_DISABLE_DIRSYNC=1		\
 	-DSQLITE_ENABLE_COLUMN_METADATA=1	\
 	-DSQLITE_ENABLE_FTS3=1			\
 	-DSQLITE_ENABLE_RTREE=1			\
 	-DSQLITE_ENABLE_UNLOCK_NOTIFY=1		\
-	-DSQLITE_OMIT_LOAD_EXTENSION=1		\
 	-DSQLITE_SECURE_DELETE=1"
 
 %install
@@ -76,6 +73,8 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_includedir},%{_libdir},%{_mandir}/man1}
 	DESTDIR=$RPM_BUILD_ROOT
 
 install sqlite3.1 $RPM_BUILD_ROOT%{_mandir}/man1
+
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -94,7 +93,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
 %{_includedir}/*.h
 %{_pkgconfigdir}/*.pc
 
